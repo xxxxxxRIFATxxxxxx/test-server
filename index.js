@@ -21,7 +21,6 @@ async function run() {
         const orderCollection = database.collection("orderCollection");
         const reviewsCollection = database.collection("reviewsCollection");
 
-        // GET ALL USERS API
         app.get('/users', async (req, res) => {
             const query = {};
             const cursor = usersCollection.find(query);
@@ -29,14 +28,12 @@ async function run() {
             res.send(result);
         });
 
-        // POST USERS API
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
             res.send(result);
         });
 
-        // PUT USERS API
         app.put('/users', async (req, res) => {
             const user = req.body;
             const filter = { email: user.email };
@@ -48,7 +45,6 @@ async function run() {
             res.send(result);
         });
 
-        // SET A USER TO ADMIN API
         app.put('/users/admin', async (req, res) => {
             const user = req.body;
             const requester = req.query.email;
@@ -67,7 +63,6 @@ async function run() {
 
         });
 
-        // DELETE USER API
         app.delete('/users/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -75,7 +70,6 @@ async function run() {
             res.send(result);
         });
 
-        // CHECK USER ROLE
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -87,7 +81,6 @@ async function run() {
             res.send(isAdmin);
         });
 
-        // GET ALL APARTMENTS API
         app.get('/apartments', async (req, res) => {
             const email = req.query.email;
             let query;
@@ -107,7 +100,6 @@ async function run() {
             res.send(result);
         });
 
-        // GET SINGLE APARTMENTS API
         app.get('/apartments/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -116,14 +108,12 @@ async function run() {
             res.send(result);
         });
 
-        // POST APARTMENTS API
         app.post('/apartments', async (req, res) => {
             const apartments = req.body;
             const result = await apartmentsCollection.insertOne(apartments);
             res.send(result);
         });
 
-        // DELETE APARTMENTS API
         app.delete('/apartments/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -131,7 +121,6 @@ async function run() {
             res.send(result);
         });
 
-        // UPDATE APARTMENTS API
         app.put('/apartments/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -151,7 +140,7 @@ async function run() {
             res.send(result);
         });
 
-        // GET ALL ORDER API
+
         app.get('/orders', async (req, res) => {
             const id = req.query.id;
             const email = req.query.email;
@@ -180,14 +169,12 @@ async function run() {
             res.send(orders);
         });
 
-        // POST ORDER API
         app.post('/orders', async (req, res) => {
             const order = req.body;
             const result = await orderCollection.insertOne(order);
             res.send(result);
         });
 
-        // DELETE ORDER API
         app.delete('/orders/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -195,7 +182,6 @@ async function run() {
             res.send(result);
         });
 
-        // UPDATE ORDER API
         app.put('/orders/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -220,7 +206,6 @@ async function run() {
             res.send(result);
         });
 
-        // GET REVIEWS API
         app.get('/reviews', async (req, res) => {
             const query = {};
             const cursor = reviewsCollection.find(query);
@@ -228,21 +213,18 @@ async function run() {
             res.send(result);
         });
 
-        // POST REVIEWS API
         app.post('/reviews', async (req, res) => {
             const review = req.body;
             const result = await reviewsCollection.insertOne(review);
             res.send(result);
         });
 
-        // POST CONTACT API
         app.post('/contact', async (req, res) => {
             const contact = req.body;
             const result = await contactCollection.insertOne(contact);
             res.send(result);
         });
 
-        // POST JOB APPLICATION API
         app.post('/careers', async (req, res) => {
             const application = req.body;
             const result = await jobApplicationCollection.insertOne(application);
