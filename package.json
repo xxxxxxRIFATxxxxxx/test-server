@@ -1,7 +1,7 @@
 {
   "name": "apartment-server",
   "version": "1.0.0",
-  "description": "This is a Luxury Suite web server. Here you can booked or purchase different types apartments and house and track your orders. You can also post a apartments, delete apartments, delete your order and also update apartments package. Here is also online booking system. You can also login through Google and Email and Password. Node JS and Express JS were used to build the web server.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
